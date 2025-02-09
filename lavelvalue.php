@@ -28,7 +28,6 @@
 $array = [45, 23, 55, 33, 22, 44, 55];
 for ($i = 0; $i < count($array); $i++) {
     for ($j = 0; $j < count($array) - 1; $j++) {
-
         if ($array[$j + 1] < $array[$j]) {
             $temp = $array[$j + 1];
             $array[$j + 1] = $array[$j];
@@ -76,11 +75,10 @@ foreach ($data as $value) {
 echo "The highest value in the array is: " . $highestValue;
 
 
-$a =1;
+$a = 1;
 echo $a;
 echo $a++;
 echo $a++ + $a++;
 echo $a--;
-echo '--'.$a-- - $a--;
+echo '--' . $a-- - $a--;
 echo $a;
-
