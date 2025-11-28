@@ -1,4 +1,5 @@
 <?php
+
 class Vehicle
 {
     private $brand;
@@ -19,8 +20,8 @@ class Vehicle
 class Car extends Vehicle
 {
     private $seats;
-
-    public function __construct($brand, $color, $seats) {
+    public function __construct($brand, $color, $seats)
+    {
         // Call the parent constructor
         parent::__construct($brand, $color);
         $this->seats = $seats;
@@ -31,3 +32,6 @@ class Car extends Vehicle
         return parent::getDetails() . " It has {$this->seats} seats.";
     }
 }
+
+$newObej = new Car("Totya", "Black", "2");
+echo $newObej->getDetails();

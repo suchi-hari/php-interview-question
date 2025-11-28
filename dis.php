@@ -1124,7 +1124,6 @@ if ($conn) {
                             $operatorDetails['operator_Entity_name'] = $operatorDetails['operator_Entity_name'];
                             $operatorDetails['operator_Project_num'] = $operatorDetails['operator_Project_num'];
                             $operatorDetails['is_same_as_owner'] = "'" . $owner_operator_val . "'";
-
                             $operatorDetails['operator_name'] = $operator_name;
                             $operatorDetails['operator_type'] = $operator_type;
                             $operatorDetails['operator_postal_address'] = $operator_postal_address;
@@ -1291,11 +1290,9 @@ if ($conn) {
                     $stationDetails['energy_source'] = $energy_source;
                     $stationDetails['units_for_accreditation'] = $noumberofsought;
                     $stationDetails['planned_usageof_fossil'] = "'" . $fossilefule . "'";
-
                     $stationDetails['appc_cgp_oa'] = "'" . $typeroute . "'";
                     $stationDetails['capacity_in_appc'] = "'" . $capacity_in_appc . "'";
                     $stationDetails['capacity_in_oa'] = "'" . $capacity_in_oa . "'";
-
                     $stationDetails['self_consumption_energy_generated'] = "'" . $selfconsumption . "'";
                     $stationDetails['self_consumption_utilized_capacity'] = $selfconsumption_utilisation;
                     $stationDetails['connectivity_diagram'] = $connectivityDigram;
@@ -1310,7 +1307,6 @@ if ($conn) {
                     $networkMetering = [];
                     $newnetworkMetering = [];
                     $connectivityCount = count($result->response[$r]->forms[$i]->sections[$d]->fieldResponses);
-
                     for ($c = 0; $c < $connectivityCount; $c++) {
                         $sectionKeyfield = $result->response[$r]->forms[$i]->sections[$d]->fieldResponses[$c]->fieldKey;
                         if ($sectionKeyfield == 'F-14') {
@@ -1370,18 +1366,14 @@ if ($conn) {
                     $encloserCount = count($result->response[$r]->forms[$i]->sections[$d]->fieldResponses);
 
                     for ($e = 0; $e < $encloserCount; $e++) {
-
                         $encloserJsondeCode = json_decode($result->response[0]->forms[$i]->sections[$d]->fieldResponses[$e]->inputValue);
-
                         $encloser = explode(".", $result->response[0]->forms[$i]->sections[$d]->fieldResponses[$e]->fieldName);
                         $encloserDetails[] = $encloser[0];
-
                         $filename = $encloserJsondeCode[0]->fileName;
                         $fileType = $encloserJsondeCode[0]->type;
                         $fileValue = $encloserJsondeCode[0]->value;
 
                         /*PDF Details*/
-
                         $jsondataPdf = json_encode(array('contentId' => ["$fileValue"]));
                         $pdfheaderaddress = array('access-id:MIN_TEST_0', 'access-secret:MintesT@1234', 'api-key:Min1@GD03', 'Content-Type:application/json', 'Accept:application/json');
                         $pdfResult = accreditationApi("POST", $api_url, $jsondataPdf, $api_name = 'nsws_document/getDocument', $pdfheaderaddress);
@@ -1415,7 +1407,6 @@ if ($conn) {
                 } else {
                     //$lasinserteddata = insertData($table,$ownerDetails,$conn);
                 }
-
                 if (!empty($lasinserteddata)) {
                     $regenId['regen_id'] = $lasinserteddata;
                     $userDetails = array_merge(array_slice($userDetails, 0, 0), $regenId, array_slice($userDetails, 0));
@@ -1560,7 +1551,6 @@ if ($conn) {
                 }
             }
 
-
             /*Save accredition*/
             $indemnification = json_decode($declarationDetails['indemnification_val1'], true);
             $accredationApplydate = str_replace('/', '-', $indemnification['date']);
@@ -1669,7 +1659,6 @@ function getRegenId($entityName, $roleid, $conn)
 function findRegenId($tableName, $regenId, $conn)
 {
     //echo "SELECT regen_id FROM $tableName WHERE regen_id='".$regenId."'";
-
     $sql = mysqli_query($conn, "SELECT regen_id FROM $tableName WHERE regen_id='" . $regenId . "'");
     $fetchData = mysqli_num_rows($sql);
     return $fetchData;
@@ -1718,7 +1707,7 @@ function getAccredition($regenId, $conn)
     return $fetchData['regen_id'];
 }
 	
-		/*
+	/*
 	$expiry = mktime(0, 0, 0, date("m"), date("d") + 15, date("Y"));
     $expiry_date = date("Y-m-d", $expiry);		
 	$encod_password = hash("sha256", $password);
