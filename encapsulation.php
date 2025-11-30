@@ -28,7 +28,7 @@ class BankAccount
 }
 
 
-$bank = new BankAccount(55000);
+$bank = new BankAccount(1000);
 
 $bank->deposite(80);
 $bank->withdraw(70);
