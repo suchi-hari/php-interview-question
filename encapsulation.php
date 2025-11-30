@@ -28,7 +28,8 @@ class BankAccount
 }
 
 
-$bank = new BankAccount(8000);
+$bank = new BankAccount(55000);
+
 $bank->deposite(80);
 $bank->withdraw(70);
 echo $bank->getblance();
